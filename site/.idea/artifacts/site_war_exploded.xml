@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="site:war exploded">
+    <output-path>$PROJECT_DIR$/target/site</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="site/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="site" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: junit:junit:4.8.2" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
