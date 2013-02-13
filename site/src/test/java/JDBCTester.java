@@ -30,7 +30,7 @@ public class JDBCTester {
 
             customers.add(customer);
 
-            for (Customer a : customers) {
+            for (Customer a : customers) {  ss
                 System.out.println(a.getCustomerID() + "||" + a.getFirstName() + "||" + a.getLastName() + "||" + a.getCountry());
             }                      */
 
