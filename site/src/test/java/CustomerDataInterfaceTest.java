@@ -1,7 +1,13 @@
 import com.tmp.bookmark.config.ConnectionManager;
+import com.tmp.bookmark.di.CustomerDataInterface;
+import com.tmp.bookmark.model.Customer;
 import org.junit.*;
 
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created with IntelliJ IDEA.
@@ -53,7 +59,47 @@ public class CustomerDataInterfaceTest {
      * Method: readTextFileFromClassPath(String resourceItemPath)
      */
     @Test
-    public void testListingPayouts() {
+    public void testInsertCustomer() {
+
+        Customer cust = new Customer();
+
+        // create customer ID on timestamp, so new customer_id is added every day
+        SimpleDateFormat formatter = new SimpleDateFormat("MMddyyyy");
+        cust.setCustomerID("TEST"
+                + formatter.format(Calendar.getInstance().getTimeInMillis()));
+
+        cust.setFirstName("Andrew");
+        cust.setLastName("Apostle");
+        cust.setCountry("CA");
+
+        boolean result = CustomerDataInterface.getInstance().insertCustomer(con, cust );
+
+        assertTrue(result);
+
+
+    }
+
+    /**
+     * Method: readTextFileFromClassPath(String resourceItemPath)
+     */
+    @Test
+    public void testUpdateCustomer() {
+
+        Customer cust = new Customer();
+
+        // create customer ID on timestamp, so new customer_id is added every day
+        SimpleDateFormat formatter = new SimpleDateFormat("MMddyyyy");
+        cust.setCustomerID("TEST"
+                + formatter.format(Calendar.getInstance().getTimeInMillis()));
+
+        cust.setFirstName("Andrew");
+        cust.setLastName("Apostle");
+        cust.setCountry("FR");
+
+        boolean result = CustomerDataInterface.getInstance().updateCustomer(con, cust );
+
+        assertTrue(result);
+
 
     }
 }

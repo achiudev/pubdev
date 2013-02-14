@@ -66,10 +66,64 @@ public class CustomerDataInterface {
     }
 
     public boolean insertCustomer(Connection con, Customer customer) {
-        return true;
+        boolean result = false;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            String sql = "INSERT INTO CUSTOMER (CUST_ID, FIRST_NAME, LAST_NAME, COUNTRY) VALUES (?,?, ?, ?)";
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, customer.getCustomerID());
+            pstmt.setString(2, customer.getFirstName());
+            pstmt.setString(3, customer.getLastName());
+            pstmt.setString(4, customer.getCountry());
+
+            result = (pstmt.executeUpdate() == 1);
+
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return result;
     }
 
-    public int updateCustomer(Connection con, Customer customer) {
-        return 0;
+    public boolean updateCustomer(Connection con, Customer customer) {
+        boolean result = false;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            String sql = "UPDATE CUSTOMER SET FIRST_NAME = ?, LAST_NAME=?, COUNTRY= ? WHERE CUST_ID = ?";
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, customer.getFirstName());
+            pstmt.setString(2, customer.getLastName());
+            pstmt.setString(3, customer.getCountry());
+            pstmt.setString(4, customer.getCustomerID());
+
+            result = (pstmt.executeUpdate() == 1);
+
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return result;
     }
 }
