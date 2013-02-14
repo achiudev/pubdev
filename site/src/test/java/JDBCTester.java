@@ -1,7 +1,10 @@
 import com.tmp.bookmark.config.ConnectionManager;
 import com.tmp.bookmark.di.CustomerDataInterface;
+import com.tmp.bookmark.model.Bookmark;
 import com.tmp.bookmark.model.Customer;
 import com.tmp.bookmark.model.CustomerBookmark;
+import com.tmp.bookmark.util.FileUtil;
+import com.tmp.bookmark.util.JSONUtil;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,50 +33,46 @@ public class JDBCTester {
             //  Connection con = DriverManager.getConnection(dbUrl, "monty", "faaaaaaake");
             Connection con = ConnectionManager.getInstance().getConnection();
 
-          /*  Customer customer = CustomerDataInterface.getInstance().getCustomerByID(con, "ABCD1234");
+            /*  Customer customer = CustomerDataInterface.getInstance().getCustomerByID(con, "ABCD1234");
 
-            customers.add(customer);
+customers.add(customer);
 
-            for (Customer a : customers) {  ss
-                System.out.println(a.getCustomerID() + "||" + a.getFirstName() + "||" + a.getLastName() + "||" + a.getCountry());
-            }                      */
+for (Customer a : customers) {  ss
+System.out.println(a.getCustomerID() + "||" + a.getFirstName() + "||" + a.getLastName() + "||" + a.getCountry());
+}                      */
 
             cust_bookmark = CustomerDataInterface.getInstance().getBookmarkByCustomerID(con, "ABCD1234");
-            System.out.println(cust_bookmark.getCust_id()+"||"+cust_bookmark.getBookmark_location());
+            System.out.println(cust_bookmark.getCust_id() + "||" + cust_bookmark.getBookmark_location());
 
-            Scanner scanner =
-                    new Scanner(new File("C:\\json_andrei.txt")).useDelimiter("\\Z");
-            String contents = scanner.next();
-            System.out.println(contents);
-            scanner.close();
 
-         /*   InputStream in = JDBCTester.class.getClassLoader().getResourceAsStream("resources/json_andrei.txt");
-            try {
-                BufferedReader reader=new BufferedReader(new InputStreamReader(in));
-                String line=null;
-                while((line=reader.readLine())!=null){
-                    System.out.println(line);
-                }
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }                */
+            String contents = FileUtil.getInstance().getFileContents("C:\\json_andrei.txt");
+
+            /*   InputStream in = JDBCTester.class.getClassLoader().getResourceAsStream("resources/json_andrei.txt");
+try {
+BufferedReader reader=new BufferedReader(new InputStreamReader(in));
+String line=null;
+while((line=reader.readLine())!=null){
+    System.out.println(line);
+}
+} catch (Exception e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}                */
 
             con.close();
 
-           JSONObject j_obj = new JSONObject(contents);
-            JSONArray employees = j_obj.getJSONArray("bookmarks");
+            Vector<Bookmark> bookmarks = JSONUtil.getInstance().getBookmarks(contents);
 
-            for (int i = 0 ; i < employees.length(); i++){
-                System.out.println(employees.getJSONObject(i).get("description")+"--->"+employees.getJSONObject(i).get("link"));
+            for (Bookmark a : bookmarks) {
+                System.out.println(a.getDescription() + "--->" + a.getLink());
             }
-
 
 
         } //end try
 
         catch (SQLException e) {
-            e.printStackTrace();  } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (JSONException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
