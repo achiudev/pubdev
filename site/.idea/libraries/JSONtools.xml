@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="JSONtools">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/JSONtools.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/JSONtools.jar!/" />
+    </SOURCES>
+  </library>
+</component>
