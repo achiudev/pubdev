@@ -14,6 +14,7 @@ import java.sql.SQLException;
 public class ConnectionManager {
     private static ConnectionManager instance;
     private Connection connection;
+    //asa
 
     private final String DB_URL = "jdbc:mysql://192.168.103.60:3306/maindb";
     final String DB_USER = "monty";
