@@ -1,5 +1,7 @@
 package com.tmp.bookmark.config;
 
+import com.tmp.bookmark.model.config.DBConfig;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -16,16 +18,26 @@ public class ConnectionManager {
     private Connection connection;
 
     private final String DB_URL = "jdbc:mysql://localhost:3306/dev";
-    final String DB_USER = "test";
     final String DB_PASS = "some_pass";
+    final String DB_USER = "test";
 
     private ConnectionManager() {
         try {
+            /*DBConfig dbConfig = DBConfigManager.getInstance().getDBConfig();
+            getConnection(dbConfig);*/
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
             connection.setAutoCommit(false);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    private void getConnection(DBConfig dbConfig) throws Exception {
+
+        //connection = DriverManager.getConnection(dbConfig.getDb_url(), dbConfig.getDb_user(), dbConfig.getDb_password());
+
+
     }
 
     public static synchronized ConnectionManager getInstance() {
@@ -40,7 +52,7 @@ public class ConnectionManager {
     }
 
     public void closeConnection(Connection con, boolean commitTransUnit) throws SQLException {
-        if(con == null){
+        if (con == null) {
             return;
         }
 
