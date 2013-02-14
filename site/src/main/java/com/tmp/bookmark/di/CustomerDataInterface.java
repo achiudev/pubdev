@@ -33,7 +33,9 @@ public class CustomerDataInterface {
         ResultSet rs = null;
 
         try {
-            pstmt = con.prepareStatement("Select * FROM customer where cust_id=?");
+            String sql = "SELECT * FROM CUSTOMER WHERE CUST_ID=?";
+
+            pstmt = con.prepareStatement(sql);
             pstmt.setString(1, customerID);
 
             rs = pstmt.executeQuery();
@@ -70,40 +72,4 @@ public class CustomerDataInterface {
     public int updateCustomer(Connection con, Customer customer) {
         return 0;
     }
-
-    public CustomerBookmark getBookmarkByCustomerID(Connection con, String customerID) {
-        PreparedStatement pstmt = null;
-        CustomerBookmark cust_bookmark = new CustomerBookmark();
-        ResultSet rs = null;
-
-        try {
-            pstmt = con.prepareStatement("Select A.cust_id, B.bookmark_location FROM customer A JOIN cust_bookmark B ON A.cust_id = B.cust_id where A.cust_id=?");
-            pstmt.setString(1, customerID);
-
-            rs = pstmt.executeQuery();
-
-            if (rs.next()) {
-                cust_bookmark.setCust_id(rs.getString(1));
-                cust_bookmark.setBookmark_location(rs.getString(2));
-            }
-
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (pstmt != null) {
-                    pstmt.close();
-                }
-            } catch (Exception e) {
-            }
-        }
-
-
-        return cust_bookmark;
-    }
-
-
 }

@@ -1,2 +1,12 @@
 http://www.howtoforge.com/how-to-install-mysql-5.6-on-ubuntu-12.10-including-memcached-plugin
-http://httpd.apache.org/docs/2.2/vhosts/examples.html  d
+http://httpd.apache.org/docs/2.2/vhosts/examples.html
+
+<VirtualHost *>
+    ServerName my.todaysparent.com
+        ErrorLog /var/log/apache/my_todaysparent_com_error.log
+        CustomLog /var/log/apache/my_todaysparent_com_access.log combined env=!disable_logging
+        RewriteEngine   On
+        RewriteRule ^/watchmegrow(.*$) https://watchmegrow.todaysparent.com$1 [R]
+        RewriteRule ^/(.*$) http://localhost:6651/$1 [P]
+        ProxyPassReverse / http://localhost:6651/
+</VirtualHost>
