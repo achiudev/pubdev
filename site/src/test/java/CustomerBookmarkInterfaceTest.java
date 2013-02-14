@@ -1,4 +1,6 @@
 import com.tmp.bookmark.config.ConnectionManager;
+import com.tmp.bookmark.di.CustomerBookmarkDataInterface;
+import com.tmp.bookmark.model.CustomerBookmark;
 import org.junit.*;
 
 import java.sql.Connection;
@@ -13,6 +15,11 @@ import java.sql.Connection;
 public class CustomerBookmarkInterfaceTest {
         private static ConnectionManager conMgr;
         private static Connection con;
+
+        private String customerID="tester";
+        private String bookmarkLoc="../test/bookmark.txt";
+
+        private CustomerBookmark customerBookmark;
 
 
         /**
@@ -29,6 +36,10 @@ public class CustomerBookmarkInterfaceTest {
          */
         @Before
         public void setUp() {
+            customerBookmark = new CustomerBookmark();
+
+            customerBookmark.setCust_id(customerID);
+            customerBookmark.setBookmark_location(bookmarkLoc);
         }
 
         /**
@@ -37,7 +48,7 @@ public class CustomerBookmarkInterfaceTest {
         @AfterClass
         public static void afterClass() throws Exception {
             if (con != null) {
-                conMgr.closeConnection(con, false);
+                conMgr.closeConnection(con, true);
             }
         }
 
@@ -46,6 +57,7 @@ public class CustomerBookmarkInterfaceTest {
          */
         @After
         public void tearDown() {
+            customerBookmark = null;
         }
 
 
@@ -53,7 +65,34 @@ public class CustomerBookmarkInterfaceTest {
          * Method: readTextFileFromClassPath(String resourceItemPath)
          */
         @Test
-        public void testListingPayouts() {
+        public void testInsertCustomerBookmark() {
+            Boolean result;
 
+            result = CustomerBookmarkDataInterface.getInstance().insertCustomerBookmark(con, customerBookmark);
+            Assert.assertTrue(result);
         }
+
+        @Test
+        public void testUpdateCustomerBookmark() {
+            Boolean result;
+
+            customerBookmark.setBookmark_location("...");
+            result = CustomerBookmarkDataInterface.getInstance().updateCustomerBookmark(con, customerBookmark);
+
+            Assert.assertTrue(result);
+        }
+
+        @Test
+        public void testRemoveCustomerBookmark() {
+            Boolean result = false;
+
+            customerBookmark = CustomerBookmarkDataInterface.getInstance().getCustomerBookmarkByCustomerID(con,customerID);
+            if (customerBookmark != null) {
+                result = CustomerBookmarkDataInterface.getInstance().removeCustomerBookmark(con, customerBookmark);
+            }
+
+            Assert.assertTrue(result);
+        }
+
+
 }

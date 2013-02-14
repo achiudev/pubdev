@@ -30,7 +30,7 @@ public class CustomerBookmarkDataInterface {
         ResultSet rs = null;
 
         try {
-            String sql = "INSERT INTO CUSTOMER (CUST_ID, BOOKMARK_LOCATION) VALUES (?,?)";
+            String sql = "INSERT INTO CUST_BOOKMARK (CUST_ID, BOOKMARK_LOCATION) VALUES (?, ?)";
 
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, customerBookmark.getCust_id());
@@ -59,7 +59,7 @@ public class CustomerBookmarkDataInterface {
         ResultSet rs = null;
 
         try {
-            String sql = "UPDATE CUSTOMER SET BOOKMARK_LOCATION = ? WHERE CUST_ID = ?";
+            String sql = "UPDATE CUST_BOOKMARK SET BOOKMARK_LOCATION = ? WHERE CUST_ID = ?";
 
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, customerBookmark.getBookmark_location());
@@ -82,14 +82,42 @@ public class CustomerBookmarkDataInterface {
         return result;
     }
 
-    public CustomerBookmark getCustomerBookmarkByCustomerID(Connection con, String customerId) {
+    public boolean removeCustomerBookmark(Connection con, CustomerBookmark customerBookmark) {
+        boolean result = false;
         PreparedStatement pstmt = null;
-        CustomerBookmark cust_bookmark = new CustomerBookmark();
         ResultSet rs = null;
 
         try {
-            String sql = "SELECT A.CUST_ID, A.BOOKMARK_LOACTION FROM CUSTOMER A JOIN CUST_BOOKMARK B ON A.CUST_ID = B.CUST_ID" +
-                    "WHERE A.CUST_ID = ?";
+            String sql = "DELETE FROM CUST_BOOKMARK WHERE CUST_ID = ?";
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, customerBookmark.getCust_id());
+
+            result = (pstmt.executeUpdate() == 1);
+
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return result;
+    }
+
+    public CustomerBookmark getCustomerBookmarkByCustomerID(Connection con, String customerId) {
+        PreparedStatement pstmt = null;
+        CustomerBookmark cust_bookmark = null;
+        ResultSet rs = null;
+
+        try {
+            String sql = "SELECT B.CUST_ID, B.BOOKMARK_LOCATION FROM CUSTOMER A JOIN CUST_BOOKMARK B ON A.CUST_ID = B.CUST_ID " +
+                    "WHERE B.CUST_ID = ?";
 
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, customerId);
@@ -97,6 +125,7 @@ public class CustomerBookmarkDataInterface {
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
+                cust_bookmark = new CustomerBookmark();
                 cust_bookmark.setCust_id(rs.getString(1));
                 cust_bookmark.setBookmark_location(rs.getString(2));
             }

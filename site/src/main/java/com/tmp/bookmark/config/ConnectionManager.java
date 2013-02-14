@@ -15,13 +15,14 @@ public class ConnectionManager {
     private static ConnectionManager instance;
     private Connection connection;
 
-    private final String DB_URL = "jdbc:mysql://192.168.103.60:3306/maindb";
-    final String DB_USER = "monty";
+    private final String DB_URL = "jdbc:mysql://localhost:3306/dev";
+    final String DB_USER = "test";
     final String DB_PASS = "some_pass";
 
     private ConnectionManager() {
         try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            connection.setAutoCommit(false);
         } catch (Exception e) {
             e.printStackTrace();
         }

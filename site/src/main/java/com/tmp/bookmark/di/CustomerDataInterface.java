@@ -29,7 +29,7 @@ public class CustomerDataInterface {
 
     public Customer getCustomerByID(Connection con, String customerID) {
         PreparedStatement pstmt = null;
-        Customer customer = new Customer();
+        Customer customer = null;
         ResultSet rs = null;
 
         try {
@@ -41,6 +41,7 @@ public class CustomerDataInterface {
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
+                customer = new Customer();
                 customer.setCustomerID(rs.getString(1));
                 customer.setFirstName(rs.getString(2));
                 customer.setLastName(rs.getString(3));
@@ -60,7 +61,6 @@ public class CustomerDataInterface {
             } catch (Exception e) {
             }
         }
-
 
         return customer;
     }

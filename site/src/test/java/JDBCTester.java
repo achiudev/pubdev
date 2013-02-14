@@ -1,4 +1,5 @@
 import com.tmp.bookmark.config.ConnectionManager;
+import com.tmp.bookmark.di.CustomerBookmarkDataInterface;
 import com.tmp.bookmark.di.CustomerDataInterface;
 import com.tmp.bookmark.model.Bookmark;
 import com.tmp.bookmark.model.Customer;
@@ -41,7 +42,7 @@ for (Customer a : customers) {  ss
 System.out.println(a.getCustomerID() + "||" + a.getFirstName() + "||" + a.getLastName() + "||" + a.getCountry());
 }                      */
 
-            cust_bookmark = CustomerDataInterface.getInstance().getBookmarkByCustomerID(con, "ABCD1234");
+            cust_bookmark = CustomerBookmarkDataInterface.getInstance().getCustomerBookmarkByCustomerID(con, "ABCD1234");
             System.out.println(cust_bookmark.getCust_id() + "||" + cust_bookmark.getBookmark_location());
 
 
