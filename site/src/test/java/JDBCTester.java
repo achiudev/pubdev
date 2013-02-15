@@ -32,7 +32,7 @@ public class JDBCTester {
             CustomerBookmark cust_bookmark = null;
 
             //  Connection con = DriverManager.getConnection(dbUrl, "monty", "faaaaaaake");
-            Connection con = ConnectionManager.getInstance().getConnection();
+          //  Connection con = ConnectionManager.getInstance().getConnection();
 
             /*  Customer customer = CustomerDataInterface.getInstance().getCustomerByID(con, "ABCD1234");
 
@@ -42,11 +42,15 @@ for (Customer a : customers) {
 System.out.println(a.getCustomerID() + "||" + a.getFirstName() + "||" + a.getLastName() + "||" + a.getCountry());
 }                      */
 
-            cust_bookmark = CustomerBookmarkDataInterface.getInstance().getCustomerBookmarkByCustomerID(con, "ABCD1234");
+     /*       cust_bookmark = CustomerBookmarkDataInterface.getInstance().getCustomerBookmarkByCustomerID(con, "ABCD1234");
             System.out.println(cust_bookmark.getCust_id() + "||" + cust_bookmark.getBookmark_location());
 
+                                                                                                 */
+            String contents = FileUtil.getInstance().getFileContents("json_files/json.txt");
 
-            String contents = FileUtil.getInstance().getFileContents("C:\\json_andrei.txt");
+         //   System.out.println(contents);
+
+            FileUtil.getInstance().createAndWriteToFile("json_files","json.txt","");
 
             /*   InputStream in = JDBCTester.class.getClassLoader().getResourceAsStream("resources/json_andrei.txt");
 try {
@@ -60,7 +64,7 @@ while((line=reader.readLine())!=null){
 e.printStackTrace();
 }                */
 
-            con.close();
+            //con.close();
 
             Vector<Bookmark> bookmarks = JSONUtil.getInstance().getBookmarks(contents);
 
@@ -71,11 +75,11 @@ e.printStackTrace();
 
         } //end try
 
-        catch (SQLException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
+       catch (FileNotFoundException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (JSONException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
