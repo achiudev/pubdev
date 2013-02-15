@@ -17,22 +17,24 @@ import java.io.File;
  * To change this template use File | Settings | File Templates.
  */
 public class DBConfigManager {
-    final String DB_ROOT_FOLDER_NAME = "dev";
-    final String DB_ROOT_FILE_NAME = "dbconfig.xml";
-    final String DB_ROOT_PATH = System.getProperty("user.home");
-    final String DB_FOLDER_PATH = DB_ROOT_PATH + File.separator + DB_ROOT_FOLDER_NAME;
-    final String DB_FILE_PATH = DB_FOLDER_PATH + File.separator + DB_ROOT_FILE_NAME;
-    final String TAG_DB_ROOT = "DBConfig";
-    final String TAG_DB_APPLICATION = "ApplicationDBConfig";
-    final String DB_ELEMENT_URL = "URL";
-    final String DB_ELEMENT_USERNAME = "Username";
-    final String DB_ELEMENT_PASSWORD = "Password";
+    private final String USER_HOME = System.getProperty("user.home");
+    private final String DB_ROOT_FOLDER_NAME = "dev";
+    private final String DB_ROOT_FILE_NAME = "dbconfig.xml";
+    private final String DB_ROOT_PATH = isNetworkPath(System.getProperty("user.home")) ? "\\" + USER_HOME : USER_HOME;
+    private final String DB_FOLDER_PATH = DB_ROOT_PATH + File.separator + DB_ROOT_FOLDER_NAME;
+    private final String DB_FILE_PATH = DB_FOLDER_PATH + File.separator + DB_ROOT_FILE_NAME;
+    private final String TAG_DB_ROOT = "DBConfig";
+    private final String TAG_DB_APPLICATION = "ApplicationDBConfig";
+    private final String DB_ELEMENT_URL = "URL";
+    private final String DB_ELEMENT_USERNAME = "Username";
+    private final String DB_ELEMENT_PASSWORD = "Password";
 
     public static DBConfigManager instance;
     private DBConfig dbConfig;
 
     private DBConfigManager() {
         try {
+            dbConfig = new DBConfig();
             initDBConfigurations();
         } catch (Exception e) {
             e.printStackTrace();
@@ -54,10 +56,6 @@ public class DBConfigManager {
     private void initDBConfigurations() throws Exception {
         Document document = XMLUtil.ParseXmlToDom(DB_FILE_PATH);
         populateDBConfig(document);
-
-        if (dbConfig == null) {
-            System.out.println("Loading DBConfig failed");
-        }
     }
 
     private void populateDBConfig(Document doc) {
@@ -77,6 +75,10 @@ public class DBConfigManager {
 
             }
         }
+    }
+
+    private boolean isNetworkPath(String path) {
+        return path.startsWith("\\");
     }
 
 

@@ -58,7 +58,7 @@ public class CustomerDataInterfaceTest {
     /**
      * Method: readTextFileFromClassPath(String resourceItemPath)
      */
-    @Test
+    //@Test
     public void testInsertCustomer() {
 
         Customer cust = new Customer();
@@ -82,7 +82,7 @@ public class CustomerDataInterfaceTest {
     /**
      * Method: readTextFileFromClassPath(String resourceItemPath)
      */
-    @Test
+    //@Test
     public void testUpdateCustomer() {
 
         Customer cust = new Customer();
