@@ -1,8 +1,9 @@
 --Create User table
-create table customer (cust_id char(20) PRIMARY KEY, first_name char(20), last_name char(20), country char(20));
-insert into customer VALUES ('ABCD1234', 'Andrei', 'Apostol', 'CA');
-insert into customer VALUES ('WXYZ4567', 'Alex', 'Chiu', 'CA');
+create table CUSTOMER (CUST_ID char(20) PRIMARY KEY, FIRST_NAME char(20), LAST_NAME char(20), COUNTRY char(20));
+insert into CUSTOMER VALUES ('ABCD1234', 'Andrei', 'Apostol', 'CA');
+insert into CUSTOMER VALUES ('WXYZ4567', 'Alex', 'Chiu', 'CA');
+insert into CUSTOMER VALUES ('Tester', 'Test', 'Chiu', 'CA');
 
 --Create bookmark table
-create table cust_bookmark (cust_id char (20), bookmark_location varchar(300), FOREIGN KEY (cust_id) REFERENCES customer(cust_id));
-insert into cust_bookmark values ('ABCD1234', 'C:\\json_andrei.txt');
+create table CUST_BOOKMARK (CUST_ID char (20), BOOKMARK_LOCATION varchar(300), FOREIGN KEY (CUST_ID) REFERENCES CUSTOMER(CUST_ID));
+insert into CUST_BOOKMARK values ('ABCD1234', 'C:\\json_andrei.txt');

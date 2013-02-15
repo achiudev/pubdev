@@ -22,7 +22,7 @@ public class CustomerBookmarkInterfaceTest {
         private CustomerBookmark customerBookmark;
 
 
-        /**
+        /**                                              1
          * Will perform the doMajorSetUp() before the start of all tests.
          */
         @BeforeClass
@@ -64,7 +64,7 @@ public class CustomerBookmarkInterfaceTest {
         /**
          * Method: readTextFileFromClassPath(String resourceItemPath)
          */
-        @Test
+        //@Test
         public void testInsertCustomerBookmark() {
             Boolean result;
 
@@ -72,7 +72,7 @@ public class CustomerBookmarkInterfaceTest {
             Assert.assertTrue(result);
         }
 
-        @Test
+        //@Test
         public void testUpdateCustomerBookmark() {
             Boolean result;
 
@@ -82,7 +82,7 @@ public class CustomerBookmarkInterfaceTest {
             Assert.assertTrue(result);
         }
 
-        @Test
+        //@Test
         public void testRemoveCustomerBookmark() {
             Boolean result = false;
 
