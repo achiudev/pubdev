@@ -11,7 +11,7 @@
         <module>service</module>
         <module>bookmark</module>
         <module>service</module>
-        <module>struts2-example</module>
+        <module>web</module>
     </modules>
 
     <name>Site-Parent</name>
@@ -19,13 +19,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-core</artifactId>
-            <version>2.3.8</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>site</finalName>
+        <finalName>Web</finalName>
     </build>
 </project>

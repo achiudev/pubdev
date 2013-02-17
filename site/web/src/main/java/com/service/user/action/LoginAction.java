@@ -8,7 +8,7 @@ package com.service.user.action;
  * To change this template use File | Settings | File Templates.
  */
 public class LoginAction {
-    private String username;
+    private String username = null;
 
     public String getUsername() {
         return username;
@@ -20,6 +20,9 @@ public class LoginAction {
 
     // all struts logic here
     public String execute() {
+        if (username == null) {
+            this.username = "Alex";
+        }
 
         return "SUCCESS";
 
