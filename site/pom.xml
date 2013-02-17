@@ -10,11 +10,20 @@
     <modules>
         <module>service</module>
         <module>bookmark</module>
+        <module>service</module>
+        <module>struts2-example</module>
     </modules>
 
-    <name>site Maven Webapp</name>
+    <name>Site-Parent</name>
     <url>http://maven.apache.org</url>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>2.3.8</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>site</finalName>

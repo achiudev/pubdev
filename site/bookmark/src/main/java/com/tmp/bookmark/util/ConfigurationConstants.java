@@ -7,9 +7,9 @@ package com.tmp.bookmark.util;
  * Time: 4:19 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Constants {
+public class ConfigurationConstants {
 
-    public static final String jsonDir = "json_files";
+    public static final String JSON_FILES = "json_files";
 
 
 }

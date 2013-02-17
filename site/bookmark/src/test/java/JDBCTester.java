@@ -1,10 +1,7 @@
-import com.tmp.bookmark.config.ConnectionManager;
-import com.tmp.bookmark.di.CustomerBookmarkDataInterface;
-import com.tmp.bookmark.di.CustomerDataInterface;
 import com.tmp.bookmark.model.Bookmark;
 import com.tmp.bookmark.model.Customer;
 import com.tmp.bookmark.model.CustomerBookmark;
-import com.tmp.bookmark.util.Constants;
+import com.tmp.bookmark.util.ConfigurationConstants;
 import com.tmp.bookmark.util.FileUtil;
 import com.tmp.bookmark.util.JSONUtil;
 import org.json.JSONException;
@@ -37,11 +34,11 @@ System.out.println(a.getCustomerID() + "||" + a.getFirstName() + "||" + a.getLas
             System.out.println(cust_bookmark.getCust_id() + "||" + cust_bookmark.getBookmark_location());
 
                                                                                                  */
-            String contents = FileUtil.getInstance().getFileContents(Constants.jsonDir+"/json.txt");
+            String contents = FileUtil.getInstance().getFileContents(ConfigurationConstants.JSON_FILES +"/json.txt");
 
          //   System.out.println(contents);
 
-            FileUtil.getInstance().createAndWriteToFile(Constants.jsonDir,"json.txt",contents);
+            FileUtil.getInstance().createAndWriteToFile(ConfigurationConstants.JSON_FILES,"json.txt",contents);
 
             /*   InputStream in = JDBCTester.class.getClassLoader().getResourceAsStream("resources/json_andrei.txt");
 try {

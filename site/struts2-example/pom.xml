@@ -6,11 +6,10 @@
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>service</artifactId>
+    <artifactId>struts2-example</artifactId>
     <packaging>war</packaging>
-    <name>service Maven Webapp</name>
+    <name>struts2-example Maven Webapp</name>
     <url>http://maven.apache.org</url>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -20,6 +19,6 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>service</finalName>
+        <finalName>struts2-example</finalName>
     </build>
 </project>
