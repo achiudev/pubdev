@@ -7,14 +7,9 @@ import com.tmp.bookmark.model.CustomerBookmark;
 import com.tmp.bookmark.util.Constants;
 import com.tmp.bookmark.util.FileUtil;
 import com.tmp.bookmark.util.JSONUtil;
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.*;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.Scanner;
 import java.util.Vector;
 
 

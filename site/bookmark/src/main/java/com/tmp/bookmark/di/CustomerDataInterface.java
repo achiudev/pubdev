@@ -1,7 +1,6 @@
 package com.tmp.bookmark.di;
 
 import com.tmp.bookmark.model.Customer;
-import com.tmp.bookmark.model.CustomerBookmark;
 
 
 import java.sql.Connection;

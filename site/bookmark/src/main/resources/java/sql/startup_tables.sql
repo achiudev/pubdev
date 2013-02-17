@@ -7,3 +7,5 @@ insert into CUSTOMER VALUES ('Tester', 'Test', 'Chiu', 'CA');
 --Create bookmark table
 create table CUST_BOOKMARK (CUST_ID char (20), BOOKMARK_LOCATION varchar(300), FOREIGN KEY (CUST_ID) REFERENCES CUSTOMER(CUST_ID));
 insert into CUST_BOOKMARK values ('ABCD1234', 'json_andrei.txt');
+
+create table CUSTOMER_ACC (CUST_ID char (20), EMAIL varchar(300), PASSWORD varchar(300), REGISTRATION_DATE timestamp, FOREIGN KEY (CUST_ID) REFERENCES CUSTOMER(CUST_ID));
