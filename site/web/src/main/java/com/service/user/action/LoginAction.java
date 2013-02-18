@@ -5,6 +5,7 @@ import com.tmp.bookmark.config.ConnectionManager;
 import com.tmp.bookmark.di.CustomerAccDataInterface;
 import com.tmp.bookmark.model.CustomerAcc;
 import org.apache.struts2.ServletActionContext;
+import org.omg.CORBA.COMM_FAILURE;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,8 +32,8 @@ public class LoginAction extends BaseAction {
 
         if (customerAcc == null) {
             request.setAttribute("messages", messages);
-            messages.put("error", "Login Failed!");
-            return "FAIL";
+            addActionError("LoginAction", "Login Failed.");
+            return "input";
         }
 
         return "SUCCESS";
@@ -44,6 +45,15 @@ public class LoginAction extends BaseAction {
         customerAcc = CustomerAccDataInterface.getInstance().getCustomerByEmail(con, email);
 
         return customerAcc;
+    }
+
+    public void validate() {
+        if (getEmail().length() == 0) {
+            addFieldError("email", "Please enter an email.");
+        }
+        if (getPassword().length() == 0) {
+            addFieldError("password", "Please enter a password.");
+        }
     }
 
 

@@ -44,7 +44,7 @@
             <name>Developement</name>
             <url>http://accomplex.dyndns.org/nexus/content/repositories/public/</url>
             <releases>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
             </releases>
             <snapshots>
                 <enabled>true</enabled>

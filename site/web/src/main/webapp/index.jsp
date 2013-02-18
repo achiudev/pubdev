@@ -1,22 +1,21 @@
-<%@ page contentType="text/html;"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+
+<%--
+  Created by IntelliJ IDEA.
+  User: alex
+  Date: 2/17/13
+  Time: 11:16 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <html>
+<head>
+    <title></title>
+    <%--<META HTTP-EQUIV="Refresh" CONTENT="1;URL=/User/Home.action">--%>
+</head>
 <body>
-<h2>Bookmark Home Page</h2>
-
-
-<h4>What would you like to do?</h4>
-
-<%--<span class="error">${messages.error}</span>--%>
-
-
-<a href="<s:url action="User/Login"/>">Login here</a>
-<br/>
-<a href="<s:url action="Test"/>">Register here</a>
-
-
-
+    <s:action namespace="/User" name="Home" executeResult="true" />
 
 </body>
 </html>

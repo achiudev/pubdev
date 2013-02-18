@@ -9,18 +9,14 @@
         <action name="Login">
             <result>pages/login.jsp</result>
         </action>
+
         <action name="Welcome" class="com.service.user.action.LoginAction">
             <result name="SUCCESS">pages/welcome.jsp</result>
-            <result name="FAIL">../index.jsp</result>
+            <result name="input">pages/login.jsp</result>
         </action>
 
-    </package>
-
-    <package name="home" namespace="/" extends="struts-default">
-        <action name="Test" class="com.service.user.action.Test">
-            <result name="SUCCESS">pages/welcome.jsp</result>
+        <action name="Home" class="com.service.user.action.HomeAction" method="execute">
+            <result name="SUCCESS">/User/pages/login.jsp</result>
         </action>
-
     </package>
-
 </struts>
