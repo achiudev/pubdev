@@ -12,7 +12,7 @@ import java.sql.Connection;
  * Time: 12:15 PM
  * To change this template use File | Settings | File Templates.
  */
-public class CustomerBookmarkInterfaceTest {
+public class CustomerBookmarkDataInterfaceTest {
         private static ConnectionManager conMgr;
         private static Connection con;
 
@@ -64,7 +64,7 @@ public class CustomerBookmarkInterfaceTest {
         /**
          * Method: readTextFileFromClassPath(String resourceItemPath)
          */
-        @Test
+        //@Test
         public void testInsertCustomerBookmark() {
             Boolean result;
 
@@ -72,7 +72,7 @@ public class CustomerBookmarkInterfaceTest {
             Assert.assertTrue(result);
         }
 
-        @Test
+        //@Test
         public void testUpdateCustomerBookmark() {
             Boolean result;
 
@@ -82,7 +82,7 @@ public class CustomerBookmarkInterfaceTest {
             Assert.assertTrue(result);
         }
 
-        @Test
+        //@Test
         public void testRemoveCustomerBookmark() {
             Boolean result = false;
 

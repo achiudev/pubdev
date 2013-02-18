@@ -1,21 +1,36 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
     <parent>
         <artifactId>site</artifactId>
         <groupId>site</groupId>
         <version>1.0</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>web</artifactId>
     <packaging>war</packaging>
-    <name>web Maven Webapp</name>
+    <artifactId>web</artifactId>
+
+    <name>web</name>
     <url>http://maven.apache.org</url>
+
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>2.3.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>6.0.36</version>
+        </dependency>
+
+        <dependency>
+            <groupId>bookmark</groupId>
+            <artifactId>bookmark</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
     <build>

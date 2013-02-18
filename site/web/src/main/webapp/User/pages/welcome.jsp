@@ -7,7 +7,7 @@
 
 <h4>
     Hello
-    <s:property value="username" />
+    <s:property value="email" />
 </h4>
 
 </body>

@@ -36,6 +36,7 @@ public class ConnectionManager {
 
     private void getConnection(DBConfig dbConfig) throws Exception {
         try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance(); // register driver.
             connection = DriverManager.getConnection(dbConfig.getDb_url(), dbConfig.getDb_user(), dbConfig.getDb_password());
             connection.setAutoCommit(false);
         } catch (Exception e) {

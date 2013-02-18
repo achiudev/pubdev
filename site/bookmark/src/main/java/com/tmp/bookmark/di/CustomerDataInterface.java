@@ -32,7 +32,7 @@ public class CustomerDataInterface {
         ResultSet rs = null;
 
         try {
-            String sql = "SELECT * FROM CUSTOMER WHERE CUST_ID=?";
+            String sql = "SELECT CUST_ID, FIRST_NAME, LAST_NAME, COUNTRY FROM CUSTOMER WHERE CUST_ID=?";
 
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, customerID);
@@ -41,10 +41,10 @@ public class CustomerDataInterface {
 
             if (rs.next()) {
                 customer = new Customer();
-                customer.setCustomerID(rs.getString(1));
-                customer.setFirstName(rs.getString(2));
-                customer.setLastName(rs.getString(3));
-                customer.setCountry(rs.getString(4));
+                customer.setCustomerID(rs.getString("CUST_ID"));
+                customer.setFirstName(rs.getString("FIRST_NAME"));
+                customer.setLastName(rs.getString("LAST_NAME"));
+                customer.setCountry(rs.getString("COUNTRY"));
             }
 
         } catch (SQLException sqle) {

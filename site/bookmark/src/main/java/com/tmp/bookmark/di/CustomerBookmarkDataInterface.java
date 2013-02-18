@@ -126,8 +126,8 @@ public class CustomerBookmarkDataInterface {
 
             if (rs.next()) {
                 cust_bookmark = new CustomerBookmark();
-                cust_bookmark.setCust_id(rs.getString(1));
-                cust_bookmark.setBookmark_location(rs.getString(2));
+                cust_bookmark.setCust_id(rs.getString("CUST_ID"));
+                cust_bookmark.setBookmark_location(rs.getString("BOOKMARK_LOCATION"));
             }
 
         } catch (SQLException sqle) {

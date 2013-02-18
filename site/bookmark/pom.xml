@@ -7,10 +7,13 @@
         <groupId>site</groupId>
         <version>1.0</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>bookmark</groupId>
     <artifactId>bookmark</artifactId>
     <version>1.0</version>
+    <packaging>jar</packaging>
 
     <name>Bookmark</name>
     <url>http://maven.apache.org</url>
@@ -20,16 +23,6 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20090211</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.8.2</version>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.21</version>
         </dependency>
     </dependencies>
 

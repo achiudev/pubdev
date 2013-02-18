@@ -30,7 +30,7 @@ public class CustomerAccDataInterface {
         ResultSet rs = null;
 
         try {
-            String sql = "INSERT INTO CUSTOMER_ACC (CUST_ID, EMAIL, PASSWORD, REGISTRATION_DATE) VALUES (?, ?, ?, CURRENT TIMESTAMP)";
+            String sql = "INSERT INTO CUSTOMER_ACC (CUST_ID, EMAIL, PASSWORD, REGISTRATION_DATE) VALUES (?, ?, ?, CURRENT_TIMESTAMP)";
 
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, customerAcc.getCustomerID());
@@ -53,4 +53,43 @@ public class CustomerAccDataInterface {
 
         return result;
     }
+
+    public CustomerAcc getCustomerByEmail(Connection con, String email) {
+        boolean result = false;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        CustomerAcc customerAcc = null;
+
+        try {
+            String sql = "SELECT CUST_ID, EMAIL, PASSWORD, REGISTRATION_DATE FROM CUSTOMER_ACC WHERE EMAIL = ?";
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, email);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                customerAcc = new CustomerAcc();
+                customerAcc.setCustomerID(rs.getString("CUST_ID"));
+                customerAcc.setEmail(rs.getString("EMAIL"));
+                customerAcc.setPassword(rs.getString("PASSWORD"));
+                customerAcc.setRegistrationDate(rs.getTimestamp("REGISTRATION_DATE"));
+            }
+
+       } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return customerAcc;
+    }
+
 }
