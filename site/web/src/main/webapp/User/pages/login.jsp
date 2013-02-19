@@ -14,10 +14,14 @@
 </s:if>
 
 
-<s:form action="Welcome">
-    <s:textfield name="email" label="Email" />
-    <s:password name="password" label="Password" />
+<s:form action="Login" namespace="/User">
+    <s:textfield name="email" key="global.email"/>
+    <s:password name="password" key="global.password" />
     <s:submit />
+</s:form>
+
+<s:form action="Index" namespace="/">
+    <s:submit name="index" value="Index"/>
 </s:form>
 
 </body>

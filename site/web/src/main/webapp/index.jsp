@@ -15,7 +15,11 @@
     <%--<META HTTP-EQUIV="Refresh" CONTENT="1;URL=/User/Home.action">--%>
 </head>
 <body>
-    <s:action namespace="/User" name="Home" executeResult="true" />
+    <h1>Struts 2 Hello World Example</h1>
 
+    <s:form action="Home" namespace="/User">
+        <s:submit value="Login" name="login"></s:submit>
+        <s:submit value="Register" name="register"></s:submit>
+    </s:form>
 </body>
 </html>

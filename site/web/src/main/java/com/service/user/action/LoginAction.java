@@ -22,21 +22,27 @@ public class LoginAction extends BaseAction {
     private String email = null;
     private String password = null;
     private CustomerAcc customerAcc = null;
+    private String index;
+
     private Connection con;
 
     // all struts logic here
     public String execute() {
+        if (index.equals("Index")) {
+            return "index";
+        }
+
         HttpServletRequest request = ServletActionContext.getRequest();
 
         customerAcc = authenticateCustomer();
 
         if (customerAcc == null) {
             request.setAttribute("messages", messages);
-            addActionError("LoginAction", "Login Failed.");
+            addActionError("LoginAction", getText("error.general.authentication_failed"));
             return "input";
         }
 
-        return "SUCCESS";
+        return "success";
     }
 
     private CustomerAcc authenticateCustomer() {
@@ -49,10 +55,10 @@ public class LoginAction extends BaseAction {
 
     public void validate() {
         if (getEmail().length() == 0) {
-            addFieldError("email", "Please enter an email.");
+            addFieldError("email", getText("error.general.email"));
         }
         if (getPassword().length() == 0) {
-            addFieldError("password", "Please enter a password.");
+            addFieldError("password", getText("error.general.password"));
         }
     }
 
