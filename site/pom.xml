@@ -15,7 +15,6 @@
     </modules>
 
     <name>Site-Parent</name>
-    <url>http://maven.apache.org</url>
 
     <dependencies>
         <dependency>
@@ -30,27 +29,24 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.21</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
-        <finalName>web</finalName>
+        <finalName>site</finalName>
     </build>
 
     <repositories>
         <repository>
-            <id>Developer</id>
-            <name>Developement</name>
-            <url>http://accomplex.dyndns.org/nexus/content/repositories/public/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-
+        <id>Developer</id>
+        <name>Developer</name>
+        <url>http://accomplex.dyndns.org/nexus/content/repositories/public/</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
     </repositories>
 
     <distributionManagement>
