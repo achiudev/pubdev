@@ -21,12 +21,12 @@
     </s:if>
 
     <s:form action="Register" namespace="/User">
-        <s:textfield name="email" key="global.email"></s:textfield>
-        <s:textfield name="first_name" key="global.first_name"></s:textfield>
-        <s:textfield name="last_name" key="global.last_name"></s:textfield>
-        <s:textfield name="country" key="global.country"></s:textfield>
-        <s:password name="password" key="global.password"></s:password>
-        <s:password name="verify_password" key="global.verify_password"></s:password>
+        <s:textfield name="registerDAO.email" key="global.email"></s:textfield>
+        <s:textfield name="registerDAO.first_name" key="global.first_name"></s:textfield>
+        <s:textfield name="registerDAO.last_name" key="global.last_name"></s:textfield>
+        <s:textfield name="registerDAO.country" key="global.country"></s:textfield>
+        <s:password name="registerDAO.password" key="global.password"></s:password>
+        <s:password name="registerDAO.verify_password" key="global.verify_password"></s:password>
         <s:submit/>
     </s:form>
 </body>
