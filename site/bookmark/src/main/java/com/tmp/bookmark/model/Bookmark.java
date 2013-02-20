@@ -10,6 +10,8 @@ package com.tmp.bookmark.model;
 public class Bookmark {
     String description;
     String link;
+	String name;
+	String category;
 
     public String getLink() {
         return link;
@@ -27,6 +29,19 @@ public class Bookmark {
         this.description = description;
     }
 
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
 
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
 }

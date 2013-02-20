@@ -7,8 +7,7 @@
 
 <h4>
     Hello
-    <s:property value="loginForm.email" />
-    <s:property value="registerForm.email"/>
+    <s:property value="%{#customer.firstName}" />
 </h4>
 
 </body>

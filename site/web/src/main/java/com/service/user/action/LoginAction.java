@@ -3,6 +3,8 @@ package com.service.user.action;
 
 import com.service.user.form.LoginForm;
 import com.tmp.bookmark.di.CustomerAccDataInterface;
+import com.tmp.bookmark.di.CustomerDataInterface;
+import com.tmp.bookmark.model.Customer;
 import com.tmp.bookmark.model.CustomerAcc;
 import org.apache.struts2.ServletActionContext;
 
@@ -17,7 +19,7 @@ import java.sql.Connection;
  * To change this template use File | Settings | File Templates.
  */
 public class LoginAction extends BaseAction {
-	private CustomerAcc customerAcc;
+	private Customer customer = null;
     private String index;
 	private LoginForm loginForm;
 
@@ -31,23 +33,31 @@ public class LoginAction extends BaseAction {
 
         HttpServletRequest request = ServletActionContext.getRequest();
 
-        customerAcc = authenticateCustomer();
+        customer = authenticateCustomer();
 
-        if (customerAcc == null) {
+        if (customer == null) {
             request.setAttribute("messages", messages);
             addActionError("LoginAction", getText("error.general.authentication_failed"));
             return "input";
-        }
+        } else {
+			request.setAttribute("customer", customer);
+		}
 
         return "success";
     }
 
-    private CustomerAcc authenticateCustomer() {
+    private Customer authenticateCustomer() {
+		CustomerAcc customerAcc;
+
         con = connectionManager.getConnection();
 
         customerAcc = CustomerAccDataInterface.getInstance().getCustomerByEmail(con, loginForm.getEmail());
 
-        return customerAcc;
+		if (customerAcc != null) {
+			customer = CustomerDataInterface.getInstance().getCustomerByID(con, customerAcc.getCustomerID());
+		}
+
+        return customer;
     }
 
     public void validate() {

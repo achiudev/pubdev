@@ -7,6 +7,11 @@ import com.tmp.bookmark.di.CustomerDataInterface;
 import com.tmp.bookmark.model.Customer;
 import com.tmp.bookmark.model.CustomerAcc;
 
+import org.apache.struts2.ServletActionContext;
+
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -28,6 +33,8 @@ public class RegisterAction extends BaseAction {
     public String execute() {
         String target = "success";
 
+		HttpServletRequest request = ServletActionContext.getRequest();
+
         Customer customer = initiateNewCustomer();
 
         if (customer == null) {
@@ -35,9 +42,7 @@ public class RegisterAction extends BaseAction {
             target = "input";
         }
 
-		loginForm = new LoginForm();
-
-		loginForm.setEmail(registerForm.getEmail());
+		request.setAttribute("Customer", customer);
 
         return target;
     }
