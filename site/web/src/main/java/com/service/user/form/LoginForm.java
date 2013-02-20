@@ -1,6 +1,4 @@
-package com.service.user.dao;
-
-import com.tmp.bookmark.model.CustomerAcc;
+package com.service.user.form;
 
 /**
  * Created by IntelliJ IDEA.
@@ -8,7 +6,7 @@ import com.tmp.bookmark.model.CustomerAcc;
  * Date: 19/02/13
  * Time: 3:29 PM
  */
-public class LoginDAO {
+public class LoginForm {
 	private String email = null;
 	private String password = null;
 

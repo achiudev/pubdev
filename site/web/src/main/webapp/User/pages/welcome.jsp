@@ -7,8 +7,8 @@
 
 <h4>
     Hello
-    <s:property value="loginDAO.email" />
-    <s:property value="registerDAO.email"/>
+    <s:property value="loginForm.email" />
+    <s:property value="registerForm.email"/>
 </h4>
 
 </body>

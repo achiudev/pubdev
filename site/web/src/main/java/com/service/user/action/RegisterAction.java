@@ -1,7 +1,7 @@
 package com.service.user.action;
 
-import com.service.user.dao.LoginDAO;
-import com.service.user.dao.RegisterDAO;
+import com.service.user.form.LoginForm;
+import com.service.user.form.RegisterForm;
 import com.tmp.bookmark.di.CustomerAccDataInterface;
 import com.tmp.bookmark.di.CustomerDataInterface;
 import com.tmp.bookmark.model.Customer;
@@ -20,8 +20,8 @@ import static com.tmp.bookmark.util.JavaUtil.generateCustomerID;
  * To change this template use File | Settings | File Templates.
  */
 public class RegisterAction extends BaseAction {
-	private LoginDAO loginDAO;
-	private RegisterDAO registerDAO;
+	private LoginForm loginForm;
+	private RegisterForm registerForm;
 
     private Connection con;
 
@@ -35,9 +35,9 @@ public class RegisterAction extends BaseAction {
             target = "input";
         }
 
-		loginDAO = new LoginDAO();
+		loginForm = new LoginForm();
 
-		loginDAO.setEmail(registerDAO.getEmail());
+		loginForm.setEmail(registerForm.getEmail());
 
         return target;
     }
@@ -58,8 +58,8 @@ public class RegisterAction extends BaseAction {
         CustomerAcc customerAcc = new CustomerAcc();
 
         customerAcc.setCustomerID(customer.getCustomerID());
-        customerAcc.setPassword(registerDAO.getPassword());
-        customerAcc.setEmail(registerDAO.getPassword());
+        customerAcc.setPassword(registerForm.getPassword());
+        customerAcc.setEmail(registerForm.getPassword());
 
         CustomerAccDataInterface.getInstance().insertCustomerAcc(con, customerAcc);
 
@@ -71,15 +71,15 @@ public class RegisterAction extends BaseAction {
     }
 
     private Customer addNewCustomer() {
-        String customerID = generateCustomerID(registerDAO.getFirst_name(), registerDAO.getLast_name());
+        String customerID = generateCustomerID(registerForm.getFirst_name(), registerForm.getLast_name());
         if (CustomerDataInterface.getInstance().getCustomerByID(con, customerID) != null) {
             addNewCustomer();
         }
 
         Customer customer = new Customer();
-        customer.setFirstName(registerDAO.getFirst_name());
-        customer.setLastName(registerDAO.getLast_name());
-        customer.setCountry(registerDAO.getCountry());
+        customer.setFirstName(registerForm.getFirst_name());
+        customer.setLastName(registerForm.getLast_name());
+        customer.setCountry(registerForm.getCountry());
         customer.setCustomerID(customerID);
 
         CustomerDataInterface.getInstance().insertCustomer(con, customer);
@@ -97,43 +97,43 @@ public class RegisterAction extends BaseAction {
 
     private boolean isCustomerDuplicate() {
         Boolean result = true;
-        if (CustomerAccDataInterface.getInstance().getCustomerByEmail(con, registerDAO.getEmail()) == null) {
+        if (CustomerAccDataInterface.getInstance().getCustomerByEmail(con, registerForm.getEmail()) == null) {
             return false;
         }
         return result;
     }
 
     public void validate() {
-        if (registerDAO.getEmail().length() == 0) {
-            addFieldError("registerDAO.email", getText("error.general.email"));
+        if (registerForm.getEmail().length() == 0) {
+            addFieldError("registerForm.email", getText("error.general.email"));
         }
-        if (registerDAO.getPassword().length() == 0) {
-            addFieldError("registerDAO.password", getText("error.general.password"));
+        if (registerForm.getPassword().length() == 0) {
+            addFieldError("registerForm.password", getText("error.general.password"));
         }
-        if (registerDAO.getVerify_password().length() == 0) {
-            addFieldError("registerDAO.verify_password", getText("error.general.verify_password"));
+        if (registerForm.getVerify_password().length() == 0) {
+            addFieldError("registerForm.verify_password", getText("error.general.verify_password"));
         }
-        if (registerDAO.getFirst_name().length() == 0) {
-            addFieldError("registerDAO.first_name", getText("error.general.first_name"));
+        if (registerForm.getFirst_name().length() == 0) {
+            addFieldError("registerForm.first_name", getText("error.general.first_name"));
         }
-        if (registerDAO.getLast_name().length() == 0) {
-            addFieldError("registerDAO.last_name", getText("error.general.last_name"));
+        if (registerForm.getLast_name().length() == 0) {
+            addFieldError("registerForm.last_name", getText("error.general.last_name"));
         }
-        if (registerDAO.getCountry().length() == 0) {
-            addFieldError("registerDAO.country", getText("error.general.country"));
+        if (registerForm.getCountry().length() == 0) {
+            addFieldError("registerForm.country", getText("error.general.country"));
         }
 
-        if (!registerDAO.getPassword().equals(registerDAO.getVerify_password())) {
+        if (!registerForm.getPassword().equals(registerForm.getVerify_password())) {
            	addActionError("Registration", "Passwords do not match.");
         }
 
     }
 
-	public RegisterDAO getRegisterDAO() {
-		return registerDAO;
+	public RegisterForm getRegisterForm() {
+		return registerForm;
 	}
 
-	public void setRegisterDAO(RegisterDAO registerDAO) {
-		this.registerDAO = registerDAO;
+	public void setRegisterForm(RegisterForm registerForm) {
+		this.registerForm = registerForm;
 	}
 }

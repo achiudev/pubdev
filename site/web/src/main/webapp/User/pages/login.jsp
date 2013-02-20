@@ -15,8 +15,8 @@
 
 
 <s:form action="Login" namespace="/User">
-    <s:textfield name="loginDAO.email" key="global.email"/>
-    <s:password name="loginDAO.password" key="global.password" />
+    <s:textfield name="loginForm.email" key="global.email"/>
+    <s:password name="loginForm.password" key="global.password" />
     <s:submit />
 </s:form>
 

@@ -1,15 +1,12 @@
 package com.service.user.action;
 
 
-import com.service.user.dao.LoginDAO;
-import com.tmp.bookmark.config.ConnectionManager;
+import com.service.user.form.LoginForm;
 import com.tmp.bookmark.di.CustomerAccDataInterface;
 import com.tmp.bookmark.model.CustomerAcc;
 import org.apache.struts2.ServletActionContext;
-import org.omg.CORBA.COMM_FAILURE;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 
 /**
@@ -22,7 +19,7 @@ import java.sql.Connection;
 public class LoginAction extends BaseAction {
 	private CustomerAcc customerAcc;
     private String index;
-	private LoginDAO loginDAO;
+	private LoginForm loginForm;
 
     private Connection con;
 
@@ -48,25 +45,25 @@ public class LoginAction extends BaseAction {
     private CustomerAcc authenticateCustomer() {
         con = connectionManager.getConnection();
 
-        customerAcc = CustomerAccDataInterface.getInstance().getCustomerByEmail(con, loginDAO.getEmail());
+        customerAcc = CustomerAccDataInterface.getInstance().getCustomerByEmail(con, loginForm.getEmail());
 
         return customerAcc;
     }
 
     public void validate() {
-        if (loginDAO.getEmail().length() == 0) {
-            addFieldError("loginDAO.email", getText("error.general.email"));
+        if (loginForm.getEmail().length() == 0) {
+            addFieldError("loginForm.email", getText("error.general.email"));
         }
-        if (loginDAO.getPassword().length() == 0) {
-            addFieldError("loginDAO.password", getText("error.general.password"));
+        if (loginForm.getPassword().length() == 0) {
+            addFieldError("loginForm.password", getText("error.general.password"));
         }
     }
 
-	public LoginDAO getLoginDAO() {
-		return loginDAO;
+	public LoginForm getLoginForm() {
+		return loginForm;
 	}
 
-	public void setLoginDAO(LoginDAO loginDAO) {
-		this.loginDAO = loginDAO;
+	public void setLoginForm(LoginForm loginForm) {
+		this.loginForm = loginForm;
 	}
 }

@@ -1,4 +1,4 @@
-package com.service.user.dao;
+package com.service.user.form;
 
 /**
  * Created by IntelliJ IDEA.
@@ -6,7 +6,7 @@ package com.service.user.dao;
  * Date: 19/02/13
  * Time: 3:29 PM
  */
-public class RegisterDAO {
+public class RegisterForm {
 	private String email;
 	private String password;
 	private String first_name;
@@ -65,7 +65,7 @@ public class RegisterDAO {
 
 	@Override
 	public String toString() {
-		return "RegisterDAO{" +
+		return "RegisterForm{" +
 				"email='" + email + '\'' +
 				", password='" + password + '\'' +
 				", first_name='" + first_name + '\'' +
