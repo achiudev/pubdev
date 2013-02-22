@@ -42,7 +42,7 @@ public class RegisterAction extends BaseAction {
             target = "input";
         }
 
-		request.setAttribute("Customer", customer);
+		request.setAttribute("customer", customer);
 
         return target;
     }
