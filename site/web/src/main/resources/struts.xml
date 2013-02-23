@@ -31,8 +31,9 @@
     </package>
 
     <package name="bookmark" namespace="/Bookmark" extends="struts-default">
-        <action name="Menu">
-            <result>pages/menu.jsp</result>
+        <action name="Menu" class="com.service.user.action.LoadBookmarksAction">
+            <result name="continue">pages/menu.jsp</result>
+            <result name="fail">pages/welcome.jsp</result>
         </action>
     </package>
 

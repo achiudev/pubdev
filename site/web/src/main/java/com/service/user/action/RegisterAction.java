@@ -7,6 +7,7 @@ import com.tmp.bookmark.di.CustomerDataInterface;
 import com.tmp.bookmark.model.Customer;
 import com.tmp.bookmark.model.CustomerAcc;
 
+import com.tmp.bookmark.util.ConfigurationConstants;
 import org.apache.struts2.ServletActionContext;
 
 
@@ -42,7 +43,8 @@ public class RegisterAction extends BaseAction {
             target = "input";
         }
 
-		request.setAttribute("customer", customer);
+        request.getSession().setAttribute(ConfigurationConstants.CUSTOMER_BEAN_KEY, customer);
+		//request.setAttribute("customer", customer);
 
         return target;
     }

@@ -6,6 +6,7 @@ import com.tmp.bookmark.di.CustomerAccDataInterface;
 import com.tmp.bookmark.di.CustomerDataInterface;
 import com.tmp.bookmark.model.Customer;
 import com.tmp.bookmark.model.CustomerAcc;
+import com.tmp.bookmark.util.ConfigurationConstants;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +41,8 @@ public class LoginAction extends BaseAction {
             addActionError("LoginAction", getText("error.general.authentication_failed"));
             return "input";
         } else {
-			request.setAttribute("customer", customer);
+            request.getSession().setAttribute(ConfigurationConstants.CUSTOMER_BEAN_KEY, customer);
+          //  request.setAttribute("customer", customer);
 		}
 
         return "success";

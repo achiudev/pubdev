@@ -7,7 +7,7 @@
 
 <h4>
     Hello
-    <s:set var="Customer" value="%{#request.customer}"/>
+    <s:set var="Customer" value="%{#session.CUSTOMER_BEAN}"/>
     <s:property value="%{#Customer.firstName}" />
     <s:property value="%{#Customer.lastName}" />
 </h4>

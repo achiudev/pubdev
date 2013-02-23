@@ -11,5 +11,8 @@ public class ConfigurationConstants {
 
     public static final String JSON_FILES = "json_files";
 
+    public static final String CUSTOMER_BEAN_KEY = "CUSTOMER_BEAN";
+
+    public static final String BOOKMARKS_BEAN_KEY = "CUSTOMER_BOOKMARKS";
 
 }
