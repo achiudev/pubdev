@@ -22,6 +22,14 @@
             <result name="register">pages/register.jsp</result>
             <result name="login">pages/login.jsp</result>
         </action>
+
+        <action name="Configuration" class="com.service.user.action.ConfigurationAction" method="input">
+            <result name="input">pages/configuration.jsp</result>
+        </action>
+
+        <action name="Profile">
+            <result>pages/profile.jsp</result>
+        </action>
     </package>
 
     <package name="index" namespace="/" extends="struts-default">

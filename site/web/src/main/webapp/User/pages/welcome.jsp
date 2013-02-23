@@ -13,7 +13,7 @@
 </h4>
 
 <a href="<s:url action='Menu' namespace="/Bookmark" />" >Bookmark Menu</a>
-<%--<a href="<s:url action='Configuration' namespace="/User" />">My Configuration</a>
-<a href="<s:url action='Profile' namespace="/User" />">My Profile</a>--%>
+<a href="<s:url action='Configuration' namespace="/User" />">My Configuration</a>
+<a href="<s:url action='Profile' namespace="/User" />">My Profile</a>
 </body>
 </html>
