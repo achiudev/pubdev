@@ -18,5 +18,7 @@
     <br/>
 </s:iterator>
 
+<a href="<s:url action='Welcome' namespace="/User" />">Back to Main</a>
+
 </body>
 </html>

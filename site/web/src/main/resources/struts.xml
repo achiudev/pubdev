@@ -23,6 +23,12 @@
             <result name="login">pages/login.jsp</result>
         </action>
 
+        <action name="Welcome">
+              <result>
+                  pages/welcome.jsp
+              </result>
+        </action>
+
         <action name="Configuration" class="com.service.user.action.ConfigurationAction" method="input">
             <result name="input">pages/configuration.jsp</result>
         </action>
