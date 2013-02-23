@@ -1,0 +1,7 @@
+{
+"bookmarks": [
+{ "description":"github" , "link":"www.github.com" },
+{ "description":"netflix" , "link":"www.netflix.com" },
+{ "description":"toronto star" , "link":"www.thestar.com" }
+]
+}
